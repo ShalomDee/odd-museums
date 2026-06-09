@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odd Museums — Seven Places That Shouldn't Exist</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">A Field Guide to the Strange</p>
+      <h1><em>Odd</em> Museums</h1>
+      <p class="hero-sub">Seven real places that shouldn't exist — and yet somehow do.</p>
+    </div>
+  </header>
+
+  <main class="grid-section">
+    <p class="section-label">All Exhibits — 7 Entries</p>
+    <div class="museum-grid" id="grid">
+      <!-- Cards injected by JS -->
+    </div>
+  </main>
+
+  <script>
+    async function loadMuseums() {
+      const res = await fetch('/api/museums');
+      const museums = await res.json();
+      const grid = document.getElementById('grid');
+
+      grid.innerHTML = museums.map(m => `
+        <article class="museum-card" onclick="window.location='/museums/${m.slug}'">
+          <img src="${m.imageUrl}" alt="${m.name}" loading="lazy">
+          <div class="card-body">
+            <span class="card-tag">${m.curiosityLevel}</span>
+            <h3>${m.name}</h3>
+            <p class="card-location">${m.location}</p>
+            <p class="card-summary">${m.summary.substring(0, 100)}…</p>
+            <a href="/museums/${m.slug}" class="card-link">Enter exhibit →</a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    loadMuseums();
+  </script>
+
+</body>
+</html>

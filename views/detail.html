@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exhibit — Odd Museums</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <main>
+    <div class="detail-wrap">
+      <a href="/" class="back-link">← Back to all exhibits</a>
+
+      <img id="detail-image" class="detail-image" src="" alt="">
+
+      <div class="detail-meta">
+        <span class="detail-tag" id="detail-tag"></span>
+        <span class="detail-location" id="detail-location"></span>
+      </div>
+
+      <h1 class="detail-title" id="detail-title">Loading…</h1>
+
+      <hr class="detail-divider">
+
+      <div class="detail-block">
+        <p class="detail-block-label">Must-See</p>
+        <p><span class="highlight" id="detail-mustsee"></span></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">About This Place</p>
+        <p id="detail-summary"></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    async function loadDetail() {
+      const slug = window.location.pathname.split('/').pop();
+
+      const res = await fetch(`/api/museums/${slug}`);
+      if (res.status === 404) {
+        window.location.href = '/404.html';
+        return;
+      }
+
+      const m = await res.json();
+
+      document.title = `${m.name} — Odd Museums`;
+      document.getElementById('detail-image').src = m.imageUrl;
+      document.getElementById('detail-image').alt = m.name;
+      document.getElementById('detail-tag').textContent = m.curiosityLevel;
+      document.getElementById('detail-location').textContent = m.location;
+      document.getElementById('detail-title').textContent = m.name;
+      document.getElementById('detail-mustsee').textContent = m.mustSee;
+      document.getElementById('detail-summary').textContent = m.summary;
+    }
+
+    loadDetail();
+  </script>
+
+</body>
+</html>
