@@ -23,7 +23,7 @@ app.get('/api/museums/:slug', (req, res) => {
 // Detail page
 app.get('/museums/:slug', (req, res) => {
   const museum = museums.find(m => m.slug === req.params.slug);
-  if (!museum) return res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+  if (!museum) return res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
   res.sendFile(path.join(__dirname, 'views', 'detail.html'));
 });
 
