@@ -6,6 +6,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 // API: all museums
 app.get('/api/museums', (req, res) => {
@@ -23,12 +24,12 @@ app.get('/api/museums/:slug', (req, res) => {
 app.get('/museums/:slug', (req, res) => {
   const museum = museums.find(m => m.slug === req.params.slug);
   if (!museum) return res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
-  res.sendFile(path.join(__dirname, 'public', 'detail.html'));
+  res.sendFile(path.join(__dirname, 'views', 'detail.html'));
 });
 
 // Catch-all 404
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+  res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
 app.listen(PORT, () => {
