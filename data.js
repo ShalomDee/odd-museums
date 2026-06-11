@@ -64,4 +64,4 @@ const museums = [
   }
 ];
 
-module.exports = museums;
+export default museums;
