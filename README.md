@@ -1,61 +1,50 @@
-# Odd Museums
+# WEB103 Project 2 - Odd Museums
 
-A listicle web app cataloguing seven spooky/creepy museums. Built with Node.js, Express, and vanilla HTML/CSS/JS.
+Submitted by: **Shalom Donga**
 
-## Demo Walkthrough
+About this web app: A listicle web app cataloguing seven spooky and unsettling museums from around the world. Built with Node.js and Express, with data served from a PostgreSQL database hosted on Render and a frontend built using only HTML, CSS, and JavaScript.
 
-![App Demo](demo.gif)
+Time spent: **7** hours
 
-## Features
+## Required Features
 
-- Uses only HTML, CSS, and JavaScript without a frontend framework
-- Front page is functional and appropriately styled
-- The web app displays a title
-- Displays at least five unique list items
-- Each list item includes at least three displayed attributes (name, location, curiosity level)
-- Each list item has a corresponding detail page (e.g. `/museums/mutter-museum`)
-- Clicking an item shows a detailed view including all fields
-- Serves an appropriate 404 page for undefined routes
-- Styled with Pico CSS
+The following **required** functionality is completed:
 
-## The Museums
+- [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
+- [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
+- [x] **Walkthrough added to the README, including a view of Render dashboard demonstrating that Postgres database is available**
+- [x] **Walkthrough added to the README, must including a demonstration of table contents. Used the psql command 'SELECT * FROM tablename;' to display table contents.**
 
-| Name | Location | Curiosity Level |
-|---|---|---|
-| The Mutter Museum | Philadelphia, USA | Nightmare Fuel |
-| The Paris Catacombs | Paris, France | Historically Chilling |
-| Meguro Parasitological Museum | Tokyo, Japan | Unsettling |
-| Museum of Broken Relationships | Zagreb, Croatia | Emotionally Devastating |
-| Vent Haven Museum | Kentucky, USA | Uncanny |
-| Capuchin Crypt | Rome, Italy | Historically Chilling |
-| Sedlec Ossuary | Kutna Hora, Czech Republic | Mind-Bending |
+The following **optional** features are implemented:
 
-## Setup
+- [ ] The user can search for items by a specific attribute
 
-```bash
-npm install
-node index.js
-```
+The following **additional** features are implemented:
 
-Then open `http://localhost:3000`.
+- [ ] 
 
-## Project Structure
+## Video Walkthrough
 
-```
-odd-museums/
-├── index.js        # Express server and routes
-├── data.js         # Museum data
-├── views/          # HTML pages
-│   ├── index.html
-│   ├── detail.html
-│   └── 404.html
-└── public/         # Static assets
-    └── styles.css
-```
+Here's a walkthrough of implemented required features:
 
-## Tech Stack
+<img src='demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-- Node.js
-- Express
-- Pico CSS
-- Vanilla HTML/CSS/JS
+GIF created with ... GIF tool here
+
+## Notes
+
+The Museums table includes seven entries spanning the Mutter Museum (Philadelphia), the Paris Catacombs, the Meguro Parasitological Museum (Tokyo), the Museum of Broken Relationships (Zagreb), Vent Haven Museum (Kentucky), the Capuchin Crypt (Rome), and the Sedlec Ossuary (Kutna Hora). Each entry carries a name, location, and curiosity level, with full details available on individual detail pages.
+
+The backend follows the structure introduced in the UnEarthed lab: a config directory for the database connection and environment variables, a reset script to create and seed the gifts (museums) table, controllers for query logic, and routes connecting endpoints to those controllers. The frontend retrieves data from these routes rather than from a static data file.
+
+[Add any specific challenges you ran into during the database refactor, the Render setup, or connecting the frontend fetch calls.]
+
+## License
+
+Copyright 2026 Shalom Donga
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+> http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
